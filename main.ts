@@ -28,17 +28,17 @@ export default class SmarterPasting extends Plugin {
 
 	async pasteUrlWithTitle(clipboard: ClipboardEvent): Promise<void> {
 
-		// stop if no plain text in the clipboard
-		const clipboardText = clipboard.clipboardData.getData("text/plain");
-		if (!clipboardText) return;
+		// This would strip html and turn it into plain text https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/clipboardData
+		// --> `const clipboardText = clipboard.clipboardData.getData("text/plain");`
+		// therefore, this alternative is used clipboard isn't turned into plain text
+		const clipboardText = await navigator.clipboard.readText();
+		if (!clipboardText) return; // stop if nothing in clipboard
 
-		// stop if pane isn't markdown editor
 		const editor = this.getEditor();
-		if (!editor) return;
+		if (!editor) return; // stop if pane isn't markdown editor
 
-		// Prevent default paste https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboard.stopPropagation();
-		clipboard.preventDefault();
+		clipboard.preventDefault(); // https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 
 		this.clipboardConversions(editor, clipboardText);
 	}
