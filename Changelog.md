@@ -1,3 +1,4 @@
+- 2022-06-02	release 0.2.6
 - 2022-06-02	release 0.2.5
 - 2022-06-02	properly convert html to markdown
 - 2022-06-01	remove turning on autoconvert html since not needed
