@@ -1,4 +1,4 @@
-import { Plugin, Editor, MarkdownView } from "obsidian";
+import { Editor, MarkdownView, Plugin } from "obsidian";
 
 interface PasteFunction {
 	(this: HTMLElement, ev: ClipboardEvent): void;
@@ -10,13 +10,12 @@ export default class SmarterPasting extends Plugin {
 	async onload() {
 		console.log("Tasty Pasta Plugin loaded.");
 
-		this.pasteFunction = this.pasteUrlWithTitle.bind(this); // Listen to paste event
+		this.pasteFunction = this.modifyPasting.bind(this); // Listen to paste event
 
 		this.registerEvent(
 			this.app.workspace.on("editor-paste", this.pasteFunction)
 		);
 	}
-
 
 	async onunload() { console.log("Tasty Pasta Plugin unloaded.") }
 
@@ -26,29 +25,47 @@ export default class SmarterPasting extends Plugin {
 		return activeLeaf.editor;
 	}
 
-	async pasteUrlWithTitle(clipboard: ClipboardEvent): Promise<void> {
-
-		// This would strip html and turn it into plain text https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/clipboardData
-		// --> `const clipboardText = clipboard.clipboardData.getData("text/plain");`
-		// therefore, this alternative is used clipboard isn't turned into plain text
-		const clipboardText = await navigator.clipboard.readText();
-		if (!clipboardText) return; // stop if nothing in clipboard
-
+	async modifyPasting(clipboardEv: ClipboardEvent): Promise<void> {
 		const editor = this.getEditor();
 		if (!editor) return; // stop if pane isn't markdown editor
 
-		clipboard.stopPropagation();
-		clipboard.preventDefault(); // https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
+		// prevent normal pasting from occuring
+		// https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
+		clipboardEv.stopImmediatePropagation();
+		clipboardEv.stopPropagation();
+		clipboardEv.preventDefault();
 
-		this.clipboardConversions(editor, clipboardText);
+		const clipboardText = await navigator.clipboard.readText();
+		if (!clipboardText) return;
+
+		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
 	}
 
-	async clipboardConversions(editor: Editor, input: string): Promise<void> {
+	async clipboardConversions(editor: Editor, text: string): Promise<void> {
+		const todayISO = new Date()
+			.toLocaleString("en-GB")
+			.slice(0, 10)
+			.replaceAll("/", "-");
 
-		const output = input
+		// DETECT TEXT TYPES
+		// -------------------
+		// url from any image OR pattern from the line containing username + time
+		const isFromDiscord = text.includes("https://cdn.discordapp") || /^## .*? _—_ .*:.*/m.test(text);
+
+		// TEXT MODIFICATIONS
+		// -------------------
+		text = text
 			.replace (/(?!^)(\S)-\s+(?=\w)/gm, "$1"); // remove leftover hyphens, regex uses hack to treat lookahead as lookaround https://stackoverflow.com/a/43232659
 
-		editor.replaceSelection(output);
+		if (isFromDiscord) {
+			console.log ("Discord Content");
+			text = text
+				.replace(/^\s*## (.*?)(?:!.*?\))? _—_ (.*)/gm, "__$1__ ($2)") // format username + time
+				.replace("Today at", todayISO); // insert absolute date
+		}
+
+
+		editor.replaceSelection(text);
 	}
 
 }
