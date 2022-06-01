@@ -1,3 +1,5 @@
+- 2022-06-01	release 0.2.2
+- 2022-06-01	fix working for html pasting
 - 2022-06-01	release 0.2.1
 - 2022-06-01	release 0.2.0
 - 2022-06-01	hyphenation removal
