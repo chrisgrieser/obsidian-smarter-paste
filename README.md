@@ -1,8 +1,8 @@
 # 🍝 Tasty Pasta
 
-<!-- ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md) -->
+![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into Obsidian.
+Various improvements for when you paste things into [Obsidian](https://obsidian.md/).
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
@@ -38,7 +38,7 @@ eslint --fix *.ts
 ```
 
 ## Credits
-Thanks to [@zolrath](https://github.com/zolrath) for the [Auto-Link Title Plugin](https://github.com/zolrath/obsidian-auto-link-title), which showcased how to edit paste events correctly.
+Thanks to [@zolrath](https://github.com/zolrath) for the [Auto-Link Title Plugin](https://github.com/zolrath/obsidian-auto-link-title) which showed me how to modify paste events correctly.
 
 ## About the Developer
 In my day job, I am a sociologist studying the social mechanisms underlying the digital economy. For my PhD project, I investigate the governance of the app economy and how software ecosystems manage the tension between innovation and compatibility. If you are interested in this subject, feel free to get in touch!
