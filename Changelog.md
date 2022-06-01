@@ -1,0 +1,4 @@
+- 2022-06-01	release 0.2.0
+- 2022-06-01	hyphenation removal
+- 2022-06-01	working wrapper for regex replacements
+- 2022-06-01	Initial commit
