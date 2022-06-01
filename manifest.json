@@ -1,9 +1,9 @@
 {
-	"id": "{{plugin-id}}",
-	"name": "{{plugin-name}}",
+	"id": "obsidian-smarter-paste",
+	"name": "Tasty Pasta",
 	"version": "0.1.0",
 	"minAppVersion": "0.13.19",
-	"description": "{{plugin-desc}}",
+	"description": "Various improvements for when you paste things into Obsidian.",
 	"author": "pseudometa",
 	"authorUrl": "https://chris-grieser.de/",
 	"isDesktopOnly": false

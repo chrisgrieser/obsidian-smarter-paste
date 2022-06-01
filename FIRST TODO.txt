@@ -1,21 +1,21 @@
-Replace throughout the repo: 
-{{plugin-name}}
-{{plugin-id}}
-{{plugin-desc}}
-{{plugin-class}}
+Replace throughout the repo:
+Tasty Pasta
+obsidian-smarter-paste
+Various improvements for when you paste things into Obsidian.
+SmarterPasting
 
 ---
 
-add/remove style.css from the realease.yml
+add/remove style.css from the release.yml
 
 ---
 to copypaste into the obsidian releases json:
 
     },
     {
-        "id": "{{plugin-id}}",
-        "name": "{{plugin-name}}",
+        "id": "obsidian-smarter-paste",
+        "name": "Tasty Pasta",
         "author": "pseudometa",
-        "description": "{{plugin-desc}}",
-        "repo": "chrisgrieser/{{plugin-id}}"
+        "description": "Various improvements for when you paste things into Obsidian.",
+        "repo": "chrisgrieser/obsidian-smarter-paste"
     }

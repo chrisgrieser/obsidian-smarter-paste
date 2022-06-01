@@ -1,14 +1,15 @@
-# {{plugin-name}}
+# 🍝 Tasty Pasta
 
-<!-- ![](https://img.shields.io/github/downloads/chrisgrieser/{{plugin-id}}/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/{{plugin-id}}?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md) -->
+<!-- ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md) -->
 
-{{plugin-desc}}
+Various improvements for when you paste things into Obsidian.
 
-## Table of Contents
-<!-- MarkdownTOC -->
+## Table of Contents"
+<!-- MarkdownTOC level="2"-->
 
 - [Installation](#installation)
 - [Contribute](#contribute)
+- [Credits](#credits)
 - [About the Developer](#about-the-developer)
 	- [Profiles](#profiles)
 	- [Donate](#donate)
@@ -18,7 +19,7 @@
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
 
-When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"{{plugin-name}}"*
+When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Tasty Pasta"*
 
 ## Contribute
 Please use the [`.eslintrc` configuration located in the repository](.eslintrc) and run eslint before doing a pull request, and please do *not* use `prettier`. 🙂
@@ -27,6 +28,9 @@ Please use the [`.eslintrc` configuration located in the repository](.eslintrc) 
 # Run eslint fixing most common mistakes
 eslint --fix *.ts
 ```
+
+## Credits
+Thanks to [@zolrath](https://github.com/zolrath) for the [Auto-Link Title Plugin](https://github.com/zolrath/obsidian-auto-link-title), which showcased how to edit paste events correctly.
 
 ## About the Developer
 In my day job, I am a sociologist studying the social mechanisms underlying the digital economy. For my PhD project, I investigate the governance of the app economy and how software ecosystems manage the tension between innovation and compatibility. If you are interested in this subject, feel free to get in touch!
