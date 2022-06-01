@@ -41,6 +41,15 @@ export default class SmarterPasting extends Plugin {
 		clipboard.preventDefault();
 
 		editor.replaceSelection("bla");
+		this.clipboardConversions(editor, clipboardText);
+	}
+
+	async clipboardConversions(editor: Editor, input: string): Promise<void> {
+
+		const output = input
+			.replace (/(?!^)(\S)-\s+(?=\w)/gm, "$1"); // remove leftover hyphens, regex uses hack to treat lookahead as lookaround https://stackoverflow.com/a/43232659
+
+		editor.replaceSelection(output);
 	}
 
 }

@@ -14,7 +14,7 @@ to copypaste into the obsidian releases json:
     },
     {
         "id": "obsidian-smarter-paste",
-        "name": "Tasty Pasta",
+        "name": "🍝 Tasty Pasta",
         "author": "pseudometa",
         "description": "Various improvements for when you paste things into Obsidian.",
         "repo": "chrisgrieser/obsidian-smarter-paste"

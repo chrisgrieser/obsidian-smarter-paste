@@ -5,14 +5,12 @@
 Various improvements for when you paste things into Obsidian.
 
 ## Table of Contents"
-<!-- MarkdownTOC level="2"-->
+<!-- MarkdownTOC levels="2" -->
 
 - [Installation](#installation)
 - [Contribute](#contribute)
 - [Credits](#credits)
 - [About the Developer](#about-the-developer)
-	- [Profiles](#profiles)
-	- [Donate](#donate)
 
 <!-- /MarkdownTOC -->
 
