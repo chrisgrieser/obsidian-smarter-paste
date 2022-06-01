@@ -62,7 +62,8 @@ export default class SmarterPasting extends Plugin {
 				.replace(/^## (.*?)(?:!.*?\))? _—_ (.*)/gm, "__$1__ ($2)") // format username + time
 				//           (nick)(roleIcon)     (time)
 
-				.replace(/\(Today at.*\)/, `(${todayISO})`); // replace relative w/ absolute date
+				.replace(/\(Today at.*\)/, `(${todayISO})`) // replace relative w/ absolute date
+				.replace(/^$/m, ""); // remove blank lines
 		}
 
 		editor.replaceSelection(text);
