@@ -7,7 +7,8 @@ Various improvements for when you paste things into Obsidian.
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
 
-- [Paste Replacements](#paste-replacements)
+- [General Modifications](#general-modifications)
+- [Modifications for Specific Content Types](#modifications-for-specific-content-types)
 - [Installation](#installation)
 - [Contribute](#contribute)
 - [Credits](#credits)
@@ -15,8 +16,13 @@ Various improvements for when you paste things into Obsidian.
 
 <!-- /MarkdownTOC -->
 
-## Paste Replacements
+## General Modifications
 - When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks` from the Linter Plugin](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks).
+- when the clipboard contains an URL, the trackers at the end will be removed.
+
+## Modifications for Specific Content Types
+- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at..."), it will be replaced by the absolute date.
+- Tweets copied from the Twitter website will be cleaned up.
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
