@@ -1,4 +1,4 @@
-import { Editor, MarkdownView, Plugin } from "obsidian";
+import { Editor, MarkdownView, Plugin, htmlToMarkdown } from "obsidian";
 
 interface PasteFunction {
 	(this: HTMLElement, ev: ClipboardEvent): void;
@@ -28,14 +28,15 @@ export default class SmarterPasting extends Plugin {
 		const editor = this.getEditor();
 		if (!editor) return; // stop if pane isn't markdown editor
 
-		// prevent normal pasting from occuring. Has to come before clipboard reading due to 'await'
-		// https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
-		clipboardEv.stopImmediatePropagation();
+		let clipboardText = clipboardEv.clipboardData.getData("text/html");
+		if (!clipboardText) return; // e.g. when clipboard contains image
+
+		// prevent normal pasting from occuring --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
-		const clipboardText = await navigator.clipboard.readText();
-		if (!clipboardText) return;
+		// uses Turndown via Obsidian API to emulate the "AutoConvert HTML" setting from normal pasting events
+		clipboardText = htmlToMarkdown(clipboardText);
 
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
 	}
