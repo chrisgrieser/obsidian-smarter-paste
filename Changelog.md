@@ -1,3 +1,6 @@
+- 2022-06-02	release 0.2.5
+- 2022-06-02	properly convert html to markdown
+- 2022-06-01	remove turning on autoconvert html since not needed
 - 2022-06-01	release 0.2.4
 - 2022-06-01	automatically turn on 'Auto Convert HTML' setting which is needed for this plugin to work
 - 2022-06-01	make typescript stop nagging about replaceAll()
