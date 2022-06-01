@@ -1,12 +1,4 @@
-import { Editor, MarkdownView, Notice, Plugin } from "obsidian";
-
-// add type safety for the undocumented methods
-declare module "obsidian" {
-	interface Vault {
-		setConfig: (config: string, newValue: boolean) => void;
-		getConfig: (config: string) => boolean;
-	}
-}
+import { Editor, MarkdownView, Plugin } from "obsidian";
 
 interface PasteFunction {
 	(this: HTMLElement, ev: ClipboardEvent): void;
@@ -36,26 +28,16 @@ export default class SmarterPasting extends Plugin {
 		const editor = this.getEditor();
 		if (!editor) return; // stop if pane isn't markdown editor
 
-		// prevent normal pasting from occuring
+		// prevent normal pasting from occuring. Has to come before clipboard reading due to 'await'
 		// https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopImmediatePropagation();
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
-		this.ensureHTMLAutoConvertIsEnabled();
-
 		const clipboardText = await navigator.clipboard.readText();
 		if (!clipboardText) return;
 
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
-	}
-
-	private ensureHTMLAutoConvertIsEnabled () {
-		const isDisabled = this.app.vault.getConfig("autoConvertHtml") === false;
-		if (isDisabled) {
-			this.app.vault.setConfig("autoConvertHtml", true);
-			new Notice ("'Auto Convert HTML' setting was disabled. \n\nIt has been enabled for this plugin to work correctly.");
-		}
 	}
 
 	async clipboardConversions(editor: Editor, text: string): Promise<void> {
