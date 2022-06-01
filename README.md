@@ -7,12 +7,16 @@ Various improvements for when you paste things into Obsidian.
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
 
+- [Paste Replacements](#paste-replacements)
 - [Installation](#installation)
 - [Contribute](#contribute)
 - [Credits](#credits)
 - [About the Developer](#about-the-developer)
 
 <!-- /MarkdownTOC -->
+
+## Paste Replacements
+- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks` from the Linter Plugin](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks).
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).

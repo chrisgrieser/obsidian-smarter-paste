@@ -40,7 +40,6 @@ export default class SmarterPasting extends Plugin {
 		clipboard.stopPropagation();
 		clipboard.preventDefault();
 
-		editor.replaceSelection("bla");
 		this.clipboardConversions(editor, clipboardText);
 	}
 
