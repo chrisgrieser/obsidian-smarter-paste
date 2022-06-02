@@ -28,6 +28,7 @@ export default class SmarterPasting extends Plugin {
 		const editor = this.getEditor();
 		if (!editor) return; // pane isn't markdown editor
 
+		// check for plain text, too, since getData("text/html") ignores plain-text
 		const plainClipboard = clipboardEv.clipboardData.getData("text/plain");
 		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
 		if (!plainClipboard && !htmlClipboard) return; // e.g. when clipboard contains image
@@ -36,7 +37,6 @@ export default class SmarterPasting extends Plugin {
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
-		// .getData("text/html") would ignore a plain-text clipboard
 		let clipboardText;
 		if (htmlClipboard) clipboardText = htmlToMarkdown(htmlClipboard); // uses Turndown via Obsidian API to emulate the "AutoConvert HTML" setting from normal pasting
 		else clipboardText = plainClipboard;
