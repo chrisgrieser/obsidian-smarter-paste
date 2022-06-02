@@ -18,6 +18,7 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 
 ## General Modifications
 - When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks` from the Linter Plugin](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks).
+- Two or more consecutive blank lines are reduced to one blank line.
 
 ## Modifications for Specific Content Types
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at..."), it will be replaced by the absolute date.
