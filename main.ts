@@ -41,14 +41,18 @@ export default class SmarterPasting extends Plugin {
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
 	}
 
+	// turns javascript date Object into ISO-8601 date
+	public toIso8601 (date: Date) {
+		return date
+			.toLocaleString("en-GB")
+			.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
+	}
+
 	async clipboardConversions(editor: Editor, text: string): Promise<void> {
-		const todayISO = new Date()
-			.toLocaleString()
-			.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
-		const yesterdayISO = new Date()
-			.setDate(new Date().getDate() - 1)
-			.toLocaleString()
-			.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
+		const today = new Date();
+		const yesterday = new Date(new Date().setDate(today.getDate() - 1)); // JS, why u be like this? >:(
+		const todayISO = this.toIso8601(today);
+		const yesterdayISO = this.toIso8601(yesterday);
 
 		// GENERAL MODIFICATIONS
 		// ------------------------
