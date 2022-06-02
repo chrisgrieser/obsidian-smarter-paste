@@ -42,7 +42,6 @@ export default class SmarterPasting extends Plugin {
 	}
 
 	async clipboardConversions(editor: Editor, text: string): Promise<void> {
-		const URL_REGEX = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/;
 		const todayISO = new Date()
 			.toLocaleString()
 			.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
@@ -53,15 +52,8 @@ export default class SmarterPasting extends Plugin {
 
 		// GENERAL MODIFICATIONS
 		// ------------------------
-		text = text
-			// remove leftover hyphens, regex uses hack to treat lookahead as lookaround https://stackoverflow.com/a/43232659
-			.replace(/(?!^)(\S)-\s+(?=\w)/gm, "$1")
-
-			// Remove tracker at the end of URLs
-			.replace(
-				URL_REGEX,
-				url => url.replace(/\?.*=.*$/, "")
-			);
+		// remove leftover hyphens, regex uses hack to treat lookahead as lookaround https://stackoverflow.com/a/43232659
+		text = text.replace(/(?!^)(\S)-\s+(?=\w)/gm, "$1");
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
