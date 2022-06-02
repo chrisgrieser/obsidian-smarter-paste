@@ -1,3 +1,7 @@
+- 2022-06-02	release 0.5.8
+- 2022-06-02	improved formatting of discord msgs
+- 2022-06-02	better for discord messages
+- 2022-06-02	works for plain & html clipboards at the same time
 - 2022-06-02	release 0.5.7
 - 2022-06-02	release 0.2.7
 - 2022-06-02	remove url tracking removal b/c breaking some URLs & conflict w/ Auto Title Plugin
