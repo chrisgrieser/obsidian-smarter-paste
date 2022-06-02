@@ -77,9 +77,9 @@ export default class SmarterPasting extends Plugin {
 					//  (nick)(roleIcon)     (time)
 					"__$1__ ($2)"
 				)
-				.replace(/\(Today at.*\)/, `(${todayISO})`) // replace relative w/ absolute date
-				.replace(/\(Yesterday at.*\)/, `(${yesterdayISO})`)
-				.replace(/^$/m, ""); // remove blank lines
+				.replace(/\(Today at.*\)/g, `(${todayISO})`) // replace relative w/ absolute date
+				.replace(/\(Yesterday at.*\)/g, `(${yesterdayISO})`)
+				.replace(/^$/gm, ""); // remove blank lines
 		}
 
 		else if (isFromTwitter) {
