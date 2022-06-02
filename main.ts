@@ -44,7 +44,7 @@ export default class SmarterPasting extends Plugin {
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
 	}
 
-	// turns js date into ISO-8601 date-string
+	// turns js-date into ISO-8601 date-string
 	public toIso8601 (date: Date) {
 		return date
 			.toLocaleString("en-GB")
