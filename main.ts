@@ -73,13 +73,16 @@ export default class SmarterPasting extends Plugin {
 		if (isFromDiscord) {
 			text = text
 				.replace( // reformat line with username + time
-					/^## (.*?)(?:!.*?\))? _—_ (.*)/gm,
-					//  (nick)(roleIcon)     (time)
-					"__$1__ ($2)"
+					/^(?:\d.)?\s*## (.*?)(?:!.*?\))? _—_ (.*)/gm,
+					//  				(nick)(roleIcon)     (time)
+					"__$1__ ($2)  " // two spaces for strict line breaks option
 				)
+				.replace(/^.*cdn\.discordapp\.com\/avatars.*?\n/gm, "") // avatars removed
 				.replace(/\(Today at.*\)/g, `(${todayISO})`) // replace relative w/ absolute date
 				.replace(/\(Yesterday at.*\)/g, `(${yesterdayISO})`)
-				.replace(/^$/gm, ""); // remove blank lines
+				.replace(/^\s+/gm, "") // remove leading whitespaces
+				.replace(/^\s*\n/gm, "") // remove blank lines
+				.replace(/\n__/g, "\n\n__"); // add blank lines speaker change
 		}
 
 		else if (isFromTwitter) {
