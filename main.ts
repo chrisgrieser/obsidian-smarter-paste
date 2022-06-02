@@ -57,7 +57,7 @@ export default class SmarterPasting extends Plugin {
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
-		// url from any image OR pattern from the line containing username + time
+		// URL from any image OR pattern from the line containing username + time
 		const isFromDiscord = text.includes("https://cdn.discordapp") || /^## .*? _—_ .*:.*$/m.test(text);
 
 		// copypaste from Twitter Website

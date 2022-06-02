@@ -1,3 +1,5 @@
+- 2022-06-02	release 0.2.7
+- 2022-06-02	remove url tracking removal b/c breaking some URLs & conflict w/ Auto Title Plugin
 - 2022-06-02	release 0.2.6
 - 2022-06-02	release 0.2.5
 - 2022-06-02	properly convert html to markdown
