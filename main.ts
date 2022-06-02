@@ -26,17 +26,20 @@ export default class SmarterPasting extends Plugin {
 
 	async modifyPasting(clipboardEv: ClipboardEvent): Promise<void> {
 		const editor = this.getEditor();
-		if (!editor) return; // stop if pane isn't markdown editor
+		if (!editor) return; // pane isn't markdown editor
 
-		let clipboardText = clipboardEv.clipboardData.getData("text/html");
-		if (!clipboardText) return; // e.g. when clipboard contains image
+		const plainClipboard = clipboardEv.clipboardData.getData("text/plain");
+		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
+		if (!plainClipboard && !htmlClipboard) return; // e.g. when clipboard contains image
 
 		// prevent normal pasting from occuring --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
-		// uses Turndown via Obsidian API to emulate the "AutoConvert HTML" setting from normal pasting
-		clipboardText = htmlToMarkdown(clipboardText);
+		// .getData("text/html") would ignore a plain-text clipboard
+		let clipboardText;
+		if (htmlClipboard) clipboardText = htmlToMarkdown(htmlClipboard); // uses Turndown via Obsidian API to emulate the "AutoConvert HTML" setting from normal pasting
+		else clipboardText = plainClipboard;
 
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
 	}
@@ -56,8 +59,8 @@ export default class SmarterPasting extends Plugin {
 
 		// GENERAL MODIFICATIONS
 		// ------------------------
-		// remove leftover hyphens, regex uses hack to treat lookahead as lookaround https://stackoverflow.com/a/43232659
-		text = text.replace(/(?!^)(\S)-\s+(?=\w)/gm, "$1");
+		// remove leftover hyphens
+		text = text.replace(/(\S)-\s+(?=\w)/g, "$1");
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
