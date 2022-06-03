@@ -1,8 +1,8 @@
-# 🍝 Tasty Pasta
+# 🍝 Pasta Copinara
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into [Obsidian](https://obsidian.md/).
+Various improvements for when you paste things into [Obsidian](https://obsidian.md/). Makes your copypasta more tasty.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
@@ -19,6 +19,7 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 ## General Modifications
 - When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks` from the Linter Plugin](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks).
 - Two or more consecutive blank lines are reduced to one blank line.
+- Leading and Trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
@@ -27,7 +28,7 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
 
-When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Tasty Pasta"*
+When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Pasta Copinara"*
 
 ## Contribute
 Adding to more pasting formatting to `clipboardConversions` should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex probably suffice.

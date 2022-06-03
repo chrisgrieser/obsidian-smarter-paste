@@ -8,7 +8,7 @@ export default class SmarterPasting extends Plugin {
 	pasteFunction: PasteFunction;
 
 	async onload() {
-		console.log("Tasty Pasta Plugin loaded.");
+		console.log("Pasta Copinara Plugin loaded.");
 
 		this.pasteFunction = this.modifyPasting.bind(this); // Listen to paste event
 
@@ -16,7 +16,7 @@ export default class SmarterPasting extends Plugin {
 			this.app.workspace.on("editor-paste", this.pasteFunction)
 		);
 	}
-	async onunload() { console.log("Tasty Pasta Plugin unloaded.") }
+	async onunload() { console.log("Pasta Copinara Plugin unloaded.") }
 
 	private getEditor(): Editor {
 		const activeLeaf = this.app.workspace.getActiveViewOfType(MarkdownView);

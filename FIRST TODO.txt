@@ -1,5 +1,5 @@
 Replace throughout the repo:
-Tasty Pasta
+Pasta Copinara
 obsidian-smarter-paste
 Various improvements for when you paste things into Obsidian.
 SmarterPasting
@@ -14,7 +14,7 @@ to copypaste into the obsidian releases json:
     },
     {
         "id": "obsidian-smarter-paste",
-        "name": "🍝 Tasty Pasta",
+        "name": "🍝 Pasta Copinara",
         "author": "pseudometa",
         "description": "Various improvements for when you paste things into Obsidian.",
         "repo": "chrisgrieser/obsidian-smarter-paste"
