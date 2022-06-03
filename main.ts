@@ -33,6 +33,11 @@ export default class SmarterPasting extends Plugin {
 		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
 		if (!plainClipboard && !htmlClipboard) return; // e.g. when clipboard contains image
 
+		// prevent from triggering when the Auto Title Link Plugin is triggered
+		// using the very same Regex from the plugin --> https://github.com/zolrath/obsidian-auto-link-title/blob/3f806bf70ff6298de9d15861c6d39a542fb39df1/settings.ts#L20
+		const linkRegex = /^\[([^[\]]*)\]\((https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})\)$/i;
+		if (linkRegex.test(plainClipboard)) return;
+
 		// prevent normal pasting from occuring --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
