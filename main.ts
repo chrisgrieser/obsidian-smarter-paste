@@ -54,7 +54,7 @@ export default class SmarterPasting extends Plugin {
 	async clipboardConversions (editor: Editor, text: string): Promise<void> {
 		// ISO Date for relative date replacements
 		const today = new Date();
-		const yesterday = new Date(new Date().setDate(today.getDate() - 1)); // JS, why u be like this? >:(
+		const yesterday = new Date(new Date().setDate(new Date().getDate() - 1)); // JS, why u be like this? >:(
 		const todayISO = this.toIso8601(today);
 		const yesterdayISO = this.toIso8601(yesterday);
 
