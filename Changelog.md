@@ -1,3 +1,4 @@
+- 2022-06-03	release 0.5.12
 - 2022-06-03	release 0.5.11
 - 2022-06-03	prevent interference with auto link title plugin
 - 2022-06-03	release 0.5.10
