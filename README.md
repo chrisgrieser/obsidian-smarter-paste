@@ -21,7 +21,7 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 - Two or more consecutive blank lines are reduced to one blank line.
 
 ## Modifications for Specific Content Types
-- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at..."), it will be replaced by the absolute date.
+- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 
 ## Installation
@@ -30,6 +30,8 @@ Right now, the plugin is still in beta. It can be installed with the [BRAT Plugi
 When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Tasty Pasta"*
 
 ## Contribute
+Adding to more pasting formatting to `clipboardConversions` should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex probably suffice.
+
 Please use the [`.eslintrc` configuration located in the repository](.eslintrc) and run eslint before doing a pull request, and please do *not* use `prettier`. 🙂
 
 ```shell

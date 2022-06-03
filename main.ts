@@ -61,7 +61,7 @@ export default class SmarterPasting extends Plugin {
 		// ------------------------
 		text = text
 			.replace(/(\S)-\s+(?=\w)/g, "$1") // remove leftover hyphens
-			.replaceAll(/\n{3,}/g, "\n\n") // remove excessive blank lines
+			.replaceAll(/\n{3,}/g, "\n\n"); // remove excessive blank lines
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
