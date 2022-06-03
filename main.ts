@@ -60,8 +60,9 @@ export default class SmarterPasting extends Plugin {
 		// GENERAL MODIFICATIONS
 		// ------------------------
 		text = text
-			.replace(/(\S)-\s+(?=\w)/g, "$1") // remove leftover hyphens
-			.replaceAll(/\n{3,}/g, "\n\n"); // remove excessive blank lines
+			.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens
+			.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
+			.replace(/^\s+|\s+$/g, ""); // remove leading/trailing whitespace
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
