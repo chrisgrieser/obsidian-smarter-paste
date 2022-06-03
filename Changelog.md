@@ -1,3 +1,5 @@
+- 2022-06-03	release 0.5.10
+- 2022-06-03	best plugin rename ever
 - 2022-06-03	release 0.5.9
 - 2022-06-03	remove leading/trailing whitespace
 - 2022-06-02	release 0.5.8
