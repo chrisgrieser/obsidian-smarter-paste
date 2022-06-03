@@ -34,9 +34,11 @@ export default class SmarterPasting extends Plugin {
 		if (!plainClipboard && !htmlClipboard) return; // e.g. when clipboard contains image
 
 		// prevent from triggering when the Auto Title Link Plugin is triggered
-		// using the very same Regex from the plugin --> https://github.com/zolrath/obsidian-auto-link-title/blob/3f806bf70ff6298de9d15861c6d39a542fb39df1/settings.ts#L20
-		const linkRegex = /^\[([^[\]]*)\]\((https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})\)$/i;
-		if (linkRegex.test(plainClipboard)) return;
+		const linkRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
+		if (linkRegex.test(plainClipboard.trim())) {
+			console.log("Pasta Copinara aborted due to being link.");
+			return;
+		}
 
 		// prevent normal pasting from occuring --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopPropagation();
@@ -68,7 +70,7 @@ export default class SmarterPasting extends Plugin {
 		text = text
 			.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens when copying from PDFs
 			.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
-			.replace(/^\s+|\s+$/g, ""); // remove leading/trailing whitespace
+			.trim();
 
 		// SPECIFIC TEXT TYPES
 		// ------------------------
