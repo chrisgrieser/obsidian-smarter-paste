@@ -10,7 +10,7 @@ export default class SmarterPasting extends Plugin {
 	async onload() {
 		console.log("Pasta Copinara Plugin loaded.");
 
-		this.pasteFunction = this.modifyPasting.bind(this); // Listen to paste event
+		this.pasteFunction = this.modifyPasteEvent.bind(this); // Listen to paste event
 
 		this.registerEvent(
 			this.app.workspace.on("editor-paste", this.pasteFunction)
@@ -24,7 +24,7 @@ export default class SmarterPasting extends Plugin {
 		return activeLeaf.editor;
 	}
 
-	async modifyPasting(clipboardEv: ClipboardEvent): Promise<void> {
+	async modifyPasteEvent (clipboardEv: ClipboardEvent): Promise<void> {
 		const editor = this.getEditor();
 		if (!editor) return; // pane isn't markdown editor
 
@@ -51,7 +51,8 @@ export default class SmarterPasting extends Plugin {
 			.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
 	}
 
-	async clipboardConversions(editor: Editor, text: string): Promise<void> {
+	async clipboardConversions (editor: Editor, text: string): Promise<void> {
+		// ISO Date for relative date replacements
 		const today = new Date();
 		const yesterday = new Date(new Date().setDate(today.getDate() - 1)); // JS, why u be like this? >:(
 		const todayISO = this.toIso8601(today);
