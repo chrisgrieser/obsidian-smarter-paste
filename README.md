@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into [Obsidian](https://obsidian.md/). Makes your copypasta more tasty.
+Various improvements for when you paste things into [Obsidian](https://obsidian.md/). Serve tastier copypasta.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
@@ -31,7 +31,7 @@ Right now, the plugin is still in beta. It can be installed with the [BRAT Plugi
 When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Pasta Copinara"*
 
 ## Contribute
-Adding to more pasting formatting to `clipboardConversions` should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex probably suffice.
+Adding to more pasting formatting to the `clipboardConversions` function should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex probably suffice.
 
 Please use the [`.eslintrc` configuration located in the repository](.eslintrc) and run eslint before doing a pull request, and please do *not* use `prettier`. 🙂
 
