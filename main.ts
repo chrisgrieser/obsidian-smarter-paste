@@ -40,7 +40,7 @@ export default class SmarterPasting extends Plugin {
 			return;
 		}
 
-		// prevent normal pasting from occuring --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
+		// prevent default pasting --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
