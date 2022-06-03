@@ -1,3 +1,5 @@
+- 2022-06-03	release 0.5.9
+- 2022-06-03	remove leading/trailing whitespace
 - 2022-06-02	release 0.5.8
 - 2022-06-02	improved formatting of discord msgs
 - 2022-06-02	better for discord messages
