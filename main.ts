@@ -24,6 +24,14 @@ export default class SmarterPasting extends Plugin {
 		this.registerEvent(
 			this.app.workspace.on("editor-paste", this.pasteFunction)
 		);
+
+		this.addCommand({
+			id: "paste-as-plain-text",
+			name: "Paste as Plain Text & without Modifications",
+			editorCallback: (editor) => this.pasteAsPlainText(editor),
+		});
+
+
 	}
 	async onunload() { console.log("Pasta Copinara Plugin unloaded.") }
 
@@ -61,6 +69,11 @@ export default class SmarterPasting extends Plugin {
 		else clipboardText = plainClipboard;
 
 		if (clipboardEv.defaultPrevented) clipboardModifications(editor, clipboardText);
+	}
+
+	async pasteAsPlainText (editor: Editor): Promise<void> {
+		const clipboardContent = await navigator.clipboard.readText();
+		editor.replaceSelection(clipboardContent);
 	}
 
 }

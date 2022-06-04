@@ -2,13 +2,16 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into [Obsidian](https://obsidian.md/).
+Various improvements for when you paste things into [Obsidian](https://obsidian.md/). 
+
+This plugin works by modifying the default paste function, meaning you do not have to use a separate paste function, simply use `cmd/ctrl + v`.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
 
 - [General Modifications](#general-modifications)
 - [Modifications for Specific Content Types](#modifications-for-specific-content-types)
+- [Commands added](#commands-added)
 - [Limitations](#limitations)
 - [Installation](#installation)
 - [Contribute](#contribute)
@@ -26,6 +29,9 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place when the setting is disabled.*
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
+
+## Commands added
+- `Paste as Plain Text`: Utility Command which pastes the clipboard content as plain text and without any modifications.
 
 ## Limitations
 The plugin only works with the standard pasting (`cmd/ctrl + v`), and not with the pasting in vim normal mode (`p`/`P`). Pasting with `cmd/ctrl + v` in normal or insert mode does work though.
