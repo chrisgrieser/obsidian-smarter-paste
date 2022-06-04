@@ -9,6 +9,7 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 
 - [General Modifications](#general-modifications)
 - [Modifications for Specific Content Types](#modifications-for-specific-content-types)
+- [Limitations](#limitations)
 - [Installation](#installation)
 - [Contribute](#contribute)
 - [Credits](#credits)
@@ -22,11 +23,12 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 - Leading and Trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
-
 ℹ️ *Note that these* Pasta Copinara *respects the core Obsidian setting "Auto Convert HTML", meaning that the following modifications will not take place when the setting is disabled.*
-
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
+
+## Limitations
+The plugin only works with the standard pasting (`cmd/ctrl + v`), and not with the pasting in vim normal mode (`p`/`P`). Pasting with `cmd/ctrl + v` in normal or insert mode does work though.
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
