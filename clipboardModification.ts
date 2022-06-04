@@ -1,6 +1,5 @@
 import { Editor } from "obsidian";
 
-// turns js-date into ISO-8601 date-string
 function toIso8601 (date: Date): string {
 	return date
 		.toLocaleString("en-GB")
@@ -14,8 +13,7 @@ function basicModifications(str: string): string {
 		.trim();
 }
 
-
-function fromTwitterModifitions(str: string): string {
+function fromTwitterModifications(str: string): string {
 	// copypaste from Twitter Website
 	const isFromTwitter = /\[.*@(\w+).*]\(https:\/\/twitter\.com\/\w+\)\n\n(.*)$/s.test(str);
 
@@ -30,13 +28,12 @@ function fromTwitterModifitions(str: string): string {
 	return str;
 }
 
-function fromDiscordModifitions(str: string): string {
+function fromDiscordModifications(str: string): string {
 
 	// URL from any image OR pattern from the line containing username + time
 	const isFromDiscord = str.includes("https://cdn.discordapp") || /^## .*? _—_ .*:.*$/m.test(str);
 
 	if (isFromDiscord) {
-		// ISO Date for relative date replacements
 		const today = new Date();
 		const yesterday = new Date(new Date().setDate(new Date().getDate() - 1)); // JS, why u be like this? >:(
 		const todayISO = toIso8601(today);
@@ -59,11 +56,11 @@ function fromDiscordModifitions(str: string): string {
 	return str;
 }
 
-export default async function clipboardModifications (editor: Editor, text: string): Promise<void> {
+export default function clipboardModifications (editor: Editor, text: string): void {
 
 	text = basicModifications(text);
-	text = fromDiscordModifitions(text);
-	text = fromTwitterModifitions(text);
+	text = fromDiscordModifications(text);
+	text = fromTwitterModifications(text);
 
 	editor.replaceSelection(text);
 }
