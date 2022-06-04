@@ -1,3 +1,5 @@
+- 2022-06-04	release 0.6.0
+- 2022-06-04	respect autoconvertHTML when selecting html/plain
 - 2022-06-04	release 0.5.13
 - 2022-06-04	preserve time when copying from Discord
 - 2022-06-03	release 0.5.12
