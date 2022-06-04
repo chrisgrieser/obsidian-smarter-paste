@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into [Obsidian](https://obsidian.md/). 
+Various improvements for when you paste things into [Obsidian](https://obsidian.md/).
 
 This plugin works by modifying the default paste function, meaning you do not have to use a separate paste function, simply use `cmd/ctrl + v`.
 
