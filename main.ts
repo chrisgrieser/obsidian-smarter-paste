@@ -92,7 +92,7 @@ export default class SmarterPasting extends Plugin {
 				.replace(/\(Yesterday at /g, `(${yesterdayISO} `)
 				.replace(/^\s+/gm, "") // remove leading whitespaces
 				.replace(/^\s*\n/gm, "") // remove blank lines
-				.replace(/\n__/g, "\n\n__"); // add blank lines speaker change
+				.replace(/\n__/g, "\n\n__"); // add blank lines on speaker change
 		}
 
 		else if (isFromTwitter) {
