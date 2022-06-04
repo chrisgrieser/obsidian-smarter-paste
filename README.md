@@ -22,6 +22,9 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 - Leading and Trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
+
+ℹ️ *Note that these* Pasta Copinara *respects the core Obsidian setting "Auto Convert HTML", meaning that the following modifications will not take place when the setting is disabled.*
+
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 

@@ -4,6 +4,14 @@ interface PasteFunction {
 	(this: HTMLElement, ev: ClipboardEvent): void;
 }
 
+// add type safety for the undocumented methods
+declare module "obsidian" {
+	interface Vault {
+		setConfig: (config: string, newValue: boolean) => void;
+		getConfig: (config: string) => boolean;
+	}
+}
+
 export default class SmarterPasting extends Plugin {
 	pasteFunction: PasteFunction;
 
@@ -30,8 +38,7 @@ export default class SmarterPasting extends Plugin {
 
 		// check for plain text, too, since getData("text/html") ignores plain-text
 		const plainClipboard = clipboardEv.clipboardData.getData("text/plain");
-		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
-		if (!plainClipboard && !htmlClipboard) return; // e.g. when clipboard contains image
+		if (!plainClipboard) return; // e.g. when clipboard contains image
 
 		// prevent conflict with Auto Title Link Plugin
 		const linkRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
@@ -44,8 +51,11 @@ export default class SmarterPasting extends Plugin {
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
 
+		// use Turndown via Obsidian API to emulate "Auto Convert HTML" setting
 		let clipboardText;
-		if (htmlClipboard) clipboardText = htmlToMarkdown(htmlClipboard); // uses Turndown via Obsidian API to emulate the "AutoConvert HTML" setting from normal pasting
+		const convertHtmlEnabled = this.app.vault.getConfig("autoConvertHtml");
+		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
+		if (htmlClipboard && convertHtmlEnabled) clipboardText = htmlToMarkdown(htmlClipboard);
 		else clipboardText = plainClipboard;
 
 		if (clipboardEv.defaultPrevented) this.clipboardConversions(editor, clipboardText);
