@@ -1,5 +1,5 @@
 import { Editor, MarkdownView, Plugin, htmlToMarkdown } from "obsidian";
-import clipboardConversion from "clipboardConversion";
+import clipboardModifications from "clipboardModification";
 
 interface PasteFunction {
 	(this: HTMLElement, ev: ClipboardEvent): void;
@@ -34,6 +34,7 @@ export default class SmarterPasting extends Plugin {
 	}
 
 	async modifyPasteEvent (clipboardEv: ClipboardEvent): Promise<void> {
+
 		const editor = this.getEditor();
 		if (!editor) return; // pane isn't markdown editor
 
@@ -59,7 +60,7 @@ export default class SmarterPasting extends Plugin {
 		if (htmlClipboard && convertHtmlEnabled) clipboardText = htmlToMarkdown(htmlClipboard);
 		else clipboardText = plainClipboard;
 
-		if (clipboardEv.defaultPrevented) clipboardConversion(editor, clipboardText);
+		if (clipboardEv.defaultPrevented) clipboardModifications(editor, clipboardText);
 	}
 
 }

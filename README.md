@@ -18,12 +18,12 @@ Various improvements for when you paste things into [Obsidian](https://obsidian.
 <!-- /MarkdownTOC -->
 
 ## General Modifications
-- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks` from the Linter Plugin](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks).
+- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks`](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks) from the Linter Plugin.
 - Two or more consecutive blank lines are reduced to one blank line.
 - Leading and Trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
-ℹ️ *Note that these* Pasta Copinara *respects the core Obsidian setting "Auto Convert HTML", meaning that the following modifications will not take place when the setting is disabled.*
+ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place when the setting is disabled.*
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 

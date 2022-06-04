@@ -49,8 +49,8 @@ function fromDiscordModifitions(str: string): string {
 				"__$1__ ($2)  " // two spaces for strict line breaks option
 			)
 			.replace(/^.*cdn\.discordapp\.com\/avatars.*?\n/gm, "") // avatars removed
-			.replace(/\(Today at /g, `(${todayISO} `) // replace relative w/ absolute date
-			.replace(/\(Yesterday at /g, `(${yesterdayISO} `)
+			.replace(/\(Today at /g, `(${todayISO}, `) // replace relative w/ absolute date
+			.replace(/\(Yesterday at /g, `(${yesterdayISO}, `)
 			.replace(/^\s+/gm, "") // remove leading whitespaces
 			.replace(/^\s*\n/gm, "") // remove blank lines
 			.replace(/\n__/g, "\n\n__"); // add blank lines on speaker change
@@ -59,7 +59,7 @@ function fromDiscordModifitions(str: string): string {
 	return str;
 }
 
-export default async function clipboardConversion (editor: Editor, text: string): Promise<void> {
+export default async function clipboardModifications (editor: Editor, text: string): Promise<void> {
 
 	text = basicModifications(text);
 	text = fromDiscordModifitions(text);
