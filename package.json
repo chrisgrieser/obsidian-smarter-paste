@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-smarter-paste",
-	"version": "0.5.12",
+	"version": "0.5.13",
 	"description": "Various improvements for when you paste things into Obsidian.",
 	"main": "main.js",
 	"scripts": {
