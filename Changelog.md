@@ -1,3 +1,4 @@
+- 2022-06-04	release 0.6.1
 - 2022-06-04	release 0.6.0
 - 2022-06-04	respect autoconvertHTML when selecting html/plain
 - 2022-06-04	release 0.5.13
