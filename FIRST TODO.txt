@@ -1,14 +1,3 @@
-Replace throughout the repo:
-Pasta Copinara
-obsidian-smarter-paste
-Various improvements for when you paste things into Obsidian.
-SmarterPasting
-
----
-
-add/remove style.css from the release.yml
-
----
 to copypaste into the obsidian releases json:
 
     },

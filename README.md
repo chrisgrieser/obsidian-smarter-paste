@@ -2,9 +2,9 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Various improvements for when you paste things into [Obsidian](https://obsidian.md/).
+Improved copypasting from PDFs and common websites into [Obsidian](https://obsidian.md/).
 
-This plugin works by modifying the default paste function, meaning you do not have to use a separate paste function, simply use `cmd/ctrl + v`.
+This plugin works by modifying the default paste function, meaning you do not have to use a separate paste function. You can simply use `cmd/ctrl + v` as you always do.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
@@ -21,17 +21,17 @@ This plugin works by modifying the default paste function, meaning you do not ha
 <!-- /MarkdownTOC -->
 
 ## General Modifications
-- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. Equivalent to [`Remove Hyphenated Line Breaks`](https://github.com/platers/obsidian-linter/blob/master/docs/rules.md#remove-hyphenated-line-breaks) from the Linter Plugin.
+- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. 
 - Two or more consecutive blank lines are reduced to one blank line.
 - Leading and Trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
-ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place when the setting is disabled.*
+ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 
 ## Commands added
-- `Paste as Plain Text`: Utility Command which pastes the clipboard content as plain text and without any modifications.
+- `Paste as Plain Text without Modifications`: Utility Command which pastes the clipboard content as plain text and without any modifications. Also circumvents pasting-modifications from other plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title).
 
 ## Limitations
 The plugin only works with the standard pasting (`cmd/ctrl + v`), and not with the pasting in vim normal mode (`p`/`P`). Pasting with `cmd/ctrl + v` in normal or insert mode does work though.
