@@ -1,4 +1,4 @@
-import { Editor, MarkdownView, Plugin, htmlToMarkdown } from "obsidian";
+import { Editor, MarkdownView, Notice, Plugin, htmlToMarkdown } from "obsidian";
 import clipboardModifications from "clipboardModification";
 
 interface PasteFunction {
@@ -73,6 +73,10 @@ export default class SmarterPasting extends Plugin {
 
 	async pasteAsPlainText (editor: Editor): Promise<void> {
 		const clipboardContent = await navigator.clipboard.readText();
+		if (!clipboardContent) {
+			new Notice ("There is no clipboard content.");
+			return;
+		}
 		editor.replaceSelection(clipboardContent);
 	}
 
