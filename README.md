@@ -23,18 +23,18 @@ This plugin works by modifying the default paste function, meaning you do not ha
 ## General Modifications
 - When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. 
 - Two or more consecutive blank lines are reduced to one blank line.
-- Leading and Trailing whitespace is removed.
+- Leading and trailing whitespace is removed.
 
 ## Modifications for Specific Content Types
 ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
-- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced by the absolute date.
+- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 
 ## Commands added
 - `Paste as Plain Text without Modifications`: Utility Command which pastes the clipboard content as plain text and without any modifications. Also circumvents pasting-modifications from other plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title).
 
 ## Limitations
-The plugin only works with the standard pasting (`cmd/ctrl + v`), and not with the pasting in vim normal mode (`p`/`P`). Pasting with `cmd/ctrl + v` in normal or insert mode does work though.
+The plugin only works with the standard pasting (`cmd/ctrl + v`) shortcut, and not with the pasting in vim's `p`. (Pasting with `cmd/ctrl + v` in normal or insert mode does work though.)
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
@@ -42,7 +42,7 @@ Right now, the plugin is still in beta. It can be installed with the [BRAT Plugi
 When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Pasta Copinara"*
 
 ## Contribute
-Adding to more pasting formatting to the `clipboardConversions` function should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex probably suffice.
+Adding to more pasting formatting to [`clipboardConversions.ts`](clipboardConversions.ts) should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex suffice.
 
 Please use the [`.eslintrc` configuration located in the repository](.eslintrc) and run eslint before doing a pull request, and please do *not* use `prettier`. 🙂
 
