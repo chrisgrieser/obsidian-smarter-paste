@@ -51,8 +51,8 @@ export default class SmarterPasting extends Plugin {
 		if (!plainClipboard) return; // e.g. when clipboard contains image
 
 		// prevent conflict with Auto Title Link Plugin
-		const linkRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
-		if (linkRegex.test(plainClipboard.trim())) {
+		const urlRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
+		if (urlRegex.test(plainClipboard.trim())) {
 			console.log("Pasta Copinara aborted due to being link to avoid conflict with the Auto Title Link Plugin.");
 			return;
 		}
