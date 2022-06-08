@@ -1,3 +1,4 @@
+- 2022-06-08	release 0.7.1
 - 2022-06-05	release 0.7.0
 - 2022-06-05	added plain-text-pasting command
 - 2022-06-04	release 0.6.1
