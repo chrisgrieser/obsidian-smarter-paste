@@ -21,7 +21,7 @@ This plugin works by modifying the default paste function, meaning you do not ha
 <!-- /MarkdownTOC -->
 
 ## General Modifications
-- When pasting text with left-over hyphenation (e.g. when copying from a PDF), those hyphenations are removed. 
+- Left-over hyphenation or useless footnote references (e.g. when copying from a PDF) are removed. 
 - Two or more consecutive blank lines are reduced to one blank line.
 - Leading and trailing whitespace is removed.
 
