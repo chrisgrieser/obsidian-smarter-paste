@@ -24,7 +24,7 @@ This plugin works by modifying the default paste function, meaning you do not ha
 - Left-over hyphenation or useless footnote references (e.g. when copying from a PDF) are removed.
 - Two or more consecutive blank lines are reduced to one blank line.
 - Leading and trailing whitespace is removed.
-- If the cursor is one a blockquote when the pasting, and the clipboard contains multi-line content, all lines get the appropriate blockquote-syntax. (This also applies to callouts, since blockquotes and callouts share the same syntax.)
+- If the cursor is in a blockquote when the pasting and the clipboard contains multi-line content, the appropriate blockquote syntax will be applied to all lines. (This also applies to callouts, since blockquotes and callouts share the same syntax.)
 
 ## Modifications for Specific Content Types
 ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
