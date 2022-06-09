@@ -6,7 +6,7 @@ function toIso8601 (date: Date): string {
 		.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
 }
 
-function basicModifications(str: string): string {
+function basicModifications (str: string): string {
 	return str = str
 		.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens when copying from PDFs
 		.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
@@ -14,7 +14,26 @@ function basicModifications(str: string): string {
 		.trim();
 }
 
-function fromTwitterModifications(str: string): string {
+// adds blockquotes to all but the first line, when the cursor is in
+// a blockquote line during pasting. Also works with callouts
+function blockquotify (editor: Editor, str: string) {
+	const currentLineNumber = editor.getCursor("from").line;
+	const lineContent = editor.getLine(currentLineNumber);
+
+	const blockquoteRegex = /^(\s*)(>+) .*/;
+	const isBlockQuoteLine = blockquoteRegex.test(lineContent);
+	if (!isBlockQuoteLine) return str;
+
+	const indentation = lineContent.replace(blockquoteRegex, "$1");
+	const blockquoteLevel = lineContent.replace(blockquoteRegex, "$2");
+
+	// since "basicModifications" is run before and trimmed all potential
+	// trailing line breaks, we do not need to care about line breaks at
+	// beginning or end of the string, so this is fine
+	return str.replace(/\n/gm, `\n${indentation}${blockquoteLevel} `);
+}
+
+function fromTwitterModifications (str: string): string {
 	// copypaste from Twitter Website
 	const isFromTwitter = /\[.*@(\w+).*]\(https:\/\/twitter\.com\/\w+\)\n\n(.*)$/s.test(str);
 
@@ -29,7 +48,7 @@ function fromTwitterModifications(str: string): string {
 	return str;
 }
 
-function fromDiscordModifications(str: string): string {
+function fromDiscordModifications (str: string): string {
 
 	// URL from any image OR pattern from the line containing username + time
 	const isFromDiscord = str.includes("https://cdn.discordapp") || /^## .*? _—_ .*:.*$/m.test(str);
@@ -62,6 +81,7 @@ export default function clipboardModifications (editor: Editor, text: string): v
 	text = basicModifications(text);
 	text = fromDiscordModifications(text);
 	text = fromTwitterModifications(text);
+	text = blockquotify(editor, text);
 
 	editor.replaceSelection(text);
 }
