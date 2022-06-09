@@ -53,7 +53,7 @@ export default class SmarterPasting extends Plugin {
 		// prevent conflict with Auto Title Link Plugin
 		const urlRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
 		if (urlRegex.test(plainClipboard.trim())) {
-			console.log("Pasta Copinara aborted due to being link to avoid conflict with the Auto Title Link Plugin.");
+			console.log("Pasta Copinara aborted due to the clipboard being link to avoid conflict with the Auto Title Link Plugin.");
 			return;
 		}
 
@@ -62,6 +62,7 @@ export default class SmarterPasting extends Plugin {
 		clipboardEv.preventDefault();
 
 		// use Turndown via Obsidian API to emulate "Auto Convert HTML" setting
+		// to inspect clipboard content types, use https://evercoder.github.io/clipboard-inspector/
 		let clipboardText;
 		const convertHtmlEnabled = this.app.vault.getConfig("autoConvertHtml");
 		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
