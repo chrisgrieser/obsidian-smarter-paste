@@ -1,3 +1,5 @@
+- 2022-06-10	release 0.8.0
+- 2022-06-10	pasting multi-line into blockquote adds syntax
 - 2022-06-08	release 0.7.1
 - 2022-06-05	release 0.7.0
 - 2022-06-05	added plain-text-pasting command
