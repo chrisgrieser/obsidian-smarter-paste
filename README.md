@@ -27,7 +27,7 @@ This plugin works by modifying the default paste function, meaning you do not ha
 - If the cursor is one a blockquote when the pasting, and the clipboard contains multi-line content, all lines get the appropriate blockquote-syntax. (This also applies to callouts, since blockquotes and callouts share the same syntax.)
 
 ## Modifications for Specific Content Types
-ℹ️ *Note that __Pasta Copinara__ respects the core Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
+ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 
