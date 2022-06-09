@@ -4,7 +4,7 @@
 
 Improved copypasting from PDFs and common websites into [Obsidian](https://obsidian.md/).
 
-This plugin works by modifying the default paste function, meaning you do not have to use a separate paste function. You can simply use `cmd/ctrl + v` as you always do.
+This plugin works by modifying the default paste function, meaning you do not have to use a separate command – you can simply continue using `cmd/ctrl + v` as you always did.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
