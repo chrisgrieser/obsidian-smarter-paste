@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-Improved copypasting from PDFs and common websites into [Obsidian](https://obsidian.md/).
+Various improvements for when you copypaste things into [Obsidian](https://obsidian.md/).
 
 This plugin works by modifying the default paste function, meaning you do not have to use a separate command – you can simply continue using `cmd/ctrl + v` as you always did.
 
@@ -21,21 +21,22 @@ This plugin works by modifying the default paste function, meaning you do not ha
 <!-- /MarkdownTOC -->
 
 ## General Modifications
-- Left-over hyphenation or useless footnote references (e.g. when copying from a PDF) are removed.
-- Two or more consecutive blank lines are reduced to one blank line.
-- Leading and trailing whitespace is removed.
-- If the cursor is in a blockquote when the pasting and the clipboard contains multi-line content, the appropriate blockquote syntax will be applied to all lines. (This also applies to callouts, since blockquotes and callouts share the same syntax.)
+- Left-over hyphenation or useless footnote references (e.g. when copying from PDFs) are removed.
+- Two or more consecutive blank lines are reduced to one blank line; leading and trailing whitespace is removed.
+- If you paste a list item into a line that already has list syntax, the "double list syntax" that would normally occur ("- - some item") is fixed.
+- If the cursor is in a blockquote or callout when the pasting and the clipboard contains multi-line content, the appropriate syntax will be applied to all lines. 
 
 ## Modifications for Specific Content Types
-ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the following modifications will not take place if that setting is disabled.*
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
+
+ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that these modifications only take place if that setting is enabled.*
 
 ## Commands added
 - `Paste as Plain Text without Modifications`: Utility Command which pastes the clipboard content as plain text and without any modifications. Also circumvents pasting-modifications from other plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title).
 
 ## Limitations
-The plugin only works with the standard pasting (`cmd/ctrl + v`) shortcut, and not with the pasting in vim's `p`. (Pasting with `cmd/ctrl + v` in normal or insert mode does work though.)
+The plugin only works with the standard pasting (`cmd/ctrl + v`) shortcut, and not with the `p` operator in vim. (Pasting with `cmd/ctrl + v` in normal or insert mode does work though.)
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).
@@ -43,7 +44,7 @@ Right now, the plugin is still in beta. It can be installed with the [BRAT Plugi
 When published, it will be available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"Pasta Copinara"*
 
 ## Contribute
-Adding to more pasting formatting to [`clipboardConversions.ts`](clipboardConversions.ts) should be fairly straightforward and self-contained; to add some formatting rules, basic JavaScript and Regex suffice.
+Adding more rules to [`clipboardConversions.ts`](clipboardConversions.ts) should be fairly straightforward and self-contained. To add new formatting rules, basic JavaScript and Regex should be enough.
 
 Please use the [`.eslintrc` configuration located in the repository](.eslintrc) and run eslint before doing a pull request, and please do *not* use `prettier`. 🙂
 

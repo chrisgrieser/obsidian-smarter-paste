@@ -5,6 +5,6 @@ to copypaste into the obsidian releases json:
         "id": "obsidian-smarter-paste",
         "name": "Pasta Copinara 🍝",
         "author": "pseudometa",
-        "description": "Various improvements for when you paste things into Obsidian.",
+        "description": "Various improvements for when you copypaste things into Obsidian.",
         "repo": "chrisgrieser/obsidian-smarter-paste"
     }
