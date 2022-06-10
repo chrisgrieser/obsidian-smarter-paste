@@ -46,14 +46,14 @@ export default class SmarterPasting extends Plugin {
 		const editor = this.getEditor();
 		if (!editor) return; // pane isn't markdown editor
 
-		// check for plain text, too, since getData("text/html") ignores plain-text
+		// check for plain text, too, since 'getData("text/html")' ignores plain-text
 		const plainClipboard = clipboardEv.clipboardData.getData("text/plain");
 		if (!plainClipboard) return; // e.g. when clipboard contains image
 
 		// prevent conflict with Auto Title Link Plugin
 		const urlRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
 		if (urlRegex.test(plainClipboard.trim())) {
-			console.log("Pasta Copinara aborted due to the clipboard being link to avoid conflict with the Auto Title Link Plugin.");
+			console.log("Pasta Copinara aborted due as the clipboard is a link to avoid conflict with other plugins that modify pasting.");
 			return;
 		}
 
