@@ -1,3 +1,4 @@
+- 2022-06-12	release 0.9.2
 - 2022-06-11	release 0.9.1
 - 2022-06-10	release 0.9.0
 - 2022-06-10	sanitize lists when copying list into list
