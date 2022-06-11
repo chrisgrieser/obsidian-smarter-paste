@@ -18,7 +18,7 @@ function basicModifications (str: string): string {
 	return str = str
 		.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens when copying from PDFs
 		.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
-		.replace(/(\w)[.,]\d/g, "$1") // remove footnotes from quote
+		.replace(/(\D)[.,]\d/g, "$1") // remove footnotes from quote
 		.trim();
 }
 
