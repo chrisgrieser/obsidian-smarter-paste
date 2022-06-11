@@ -19,7 +19,8 @@ function basicModifications (str: string): string {
 		.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens when copying from PDFs
 		.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
 		.replace(/(\D)[.,]\d/g, "$1") // remove footnotes from quote
-		.trim();
+		.replace(/\. ?\. ?\./g, "…") // ellipsis
+		.replace(/^[\n ]|\s$/gm, ""); // trim, except for leading tabs (= usually indentaton)
 }
 
 // Adds blockquotes to all but the first line, when the cursor is in
