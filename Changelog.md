@@ -1,3 +1,5 @@
+- 2022-06-12	release 0.9.3
+- 2022-06-12	fix linebreaks being deleted
 - 2022-06-12	release 0.9.2
 - 2022-06-11	release 0.9.1
 - 2022-06-10	release 0.9.0
