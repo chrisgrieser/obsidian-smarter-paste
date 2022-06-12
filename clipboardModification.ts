@@ -20,7 +20,7 @@ function basicModifications (str: string): string {
 		.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
 		.replace(/(\D)[.,]\d/g, "$1") // remove footnotes from quote
 		.replace(/\. ?\. ?\./g, "…") // ellipsis
-		.replace(/^[\n ]|\s$/gm, ""); // trim, except for leading tabs (= usually indentaton)
+		.replace(/^[\n ]+|\s+$/g, ""); // trim, except for leading tabs (usually indentaton)
 }
 
 // Adds blockquotes to all but the first line, when the cursor is in
