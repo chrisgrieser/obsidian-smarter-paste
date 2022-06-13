@@ -21,7 +21,7 @@ This plugin works by modifying the default paste function, meaning you do not ha
 <!-- /MarkdownTOC -->
 
 ## General Modifications
-- Left-over hyphenation and footnote references (e.g. when copying from PDFs) are removed.
+- Leftover hyphenation and footnote references (e.g. when copying from PDFs) are removed.
 - Two or more consecutive blank lines are reduced to one blank line; leading and trailing whitespace is removed.
 - If you paste a list item into a line that already has list syntax, the "double list syntax" that would normally occur (`- - some item`) is fixed.
 - If the cursor is in a blockquote or callout when the pasting and the clipboard contains multi-line content, the appropriate syntax will be applied to all lines pasted.
