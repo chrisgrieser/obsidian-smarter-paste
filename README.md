@@ -30,7 +30,7 @@ This plugin works by modifying the default paste function, meaning you do not ha
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
 - Tweets copied from the Twitter website will be cleaned up.
 
-ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that these modifications only take place if that setting is enabled.*
+ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the modifications above only take place if that setting is enabled.*
 
 ## Commands added
 - `Paste as Plain Text without Modifications`: Utility Command which pastes the clipboard content as plain text and without any modifications. Also circumvents pasting-modifications from other plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title).
