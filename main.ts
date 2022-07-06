@@ -8,7 +8,6 @@ interface PasteFunction {
 // add type safety for the undocumented methods
 declare module "obsidian" {
 	interface Vault {
-		setConfig: (config: string, newValue: boolean) => void;
 		getConfig: (config: string) => boolean;
 	}
 }
