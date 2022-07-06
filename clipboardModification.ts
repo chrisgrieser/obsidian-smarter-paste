@@ -53,20 +53,19 @@ function properLists (editor: Editor, cb: string) {
 	return cb.replace(listRegex, "");
 }
 
-function fromTwitterModifications (str: string): string {
-	// copypaste from Twitter Website
-	const isFromTwitter = /\[.*@(\w+).*]\(https:\/\/twitter\.com\/\w+\)\n\n(.*)$/s.test(str);
 
-	if (isFromTwitter) {
-		str = str.replace(
-			/\[.*@(\w+).*]\(https:\/\/twitter\.com\/\w+\)\n\n(.*)$/gs,
-			//   (nick)                                    (tweet)
-			"$2\n — [@$1](https://twitter.com/$1)"
-		);
-	}
+// when copying into a list line, prevents double list enumerations like "- - item"
+function properTasks (editor: Editor, cb: string) {
+	const lineContent = getLineContent(editor);
 
-	return str;
+	const taskRegex = /^\s*- \[[ x]] /;
+	const istaskLine = taskRegex.test(lineContent);
+	const istaskClipboard = taskRegex.test(cb);
+	if (!istaskLine || !istaskClipboard) return cb;
+
+	return cb.replace(taskRegex, "");
 }
+
 
 function fromDiscordModifications (str: string): string {
 
@@ -100,9 +99,9 @@ export default function clipboardModifications (editor: Editor, clipb: string): 
 
 	clipb = basicModifications(clipb);
 	clipb = fromDiscordModifications(clipb);
-	clipb = fromTwitterModifications(clipb);
 	clipb = blockquotify(editor, clipb);
 	clipb = properLists(editor, clipb);
+	clipb = properTasks(editor, clipb);
 
 	editor.replaceSelection(clipb);
 }

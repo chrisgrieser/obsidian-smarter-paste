@@ -23,12 +23,11 @@ This plugin works by modifying the default paste function, meaning you do not ha
 ## General Modifications
 - Leftover hyphenation and footnote references (e.g. when copying from PDFs) are removed.
 - Two or more consecutive blank lines are reduced to one blank line; leading and trailing whitespace is removed.
-- If you paste a list item into a line that already has list syntax, the "double list syntax" that would normally occur (`- - some item`) is fixed.
+- If you paste a list item into a line that already has list syntax, the "double list syntax" that would normally occur (`- - some item`) is fixed. The same is done for markdown task syntax (`- [ ]`).
 - If the cursor is in a blockquote or callout when the pasting and the clipboard contains multi-line content, the appropriate syntax will be applied to all lines pasted.
 
 ## Modifications for Specific Content Types
 - Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
-- Tweets copied from the Twitter website will be cleaned up.
 
 ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the modifications above only take place if that setting is enabled.*
 
