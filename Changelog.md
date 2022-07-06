@@ -1,3 +1,5 @@
+- 2022-07-07	release 0.10.0
+- 2022-07-07	clean up tasks similar to lists
 - 2022-06-12	release 0.9.3
 - 2022-06-12	fix linebreaks being deleted
 - 2022-06-12	release 0.9.2
