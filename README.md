@@ -4,13 +4,12 @@
 
 Various improvements for when you copypaste things into [Obsidian](https://obsidian.md/).
 
-This plugin works by modifying the default paste function, meaning you do not have to use a separate command – you can simply continue using `cmd/ctrl + v` as you always did.
+This plugin works by modifying the default paste function, meaning you can simply continue using `cmd/ctrl + v` as you always did.
 
 ## Table of Contents"
 <!-- MarkdownTOC levels="2" -->
 
-- [General Modifications](#general-modifications)
-- [Modifications for Specific Content Types](#modifications-for-specific-content-types)
+- [Modifications](#modifications)
 - [Commands added](#commands-added)
 - [Limitations](#limitations)
 - [Installation](#installation)
@@ -20,22 +19,20 @@ This plugin works by modifying the default paste function, meaning you do not ha
 
 <!-- /MarkdownTOC -->
 
-## General Modifications
+## Modifications
 - Leftover hyphenation and footnote references (e.g. when copying from PDFs) are removed.
 - Two or more consecutive blank lines are reduced to one blank line; leading and trailing whitespace is removed.
 - If you paste a list item into a line that already has list syntax, the "double list syntax" that would normally occur (`- - some item`) is fixed. The same is done for markdown task syntax (`- [ ]`).
 - If the cursor is in a blockquote or callout when the pasting and the clipboard contains multi-line content, the appropriate syntax will be applied to all lines pasted.
 
-## Modifications for Specific Content Types
-- Messages copypasted from the Discord app will be cleaned up. If the timestamp contains a relative date in English ("Today at…"), it will be replaced with the absolute date.
-
-ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`, meaning that the modifications above only take place if that setting is enabled.*
+ℹ️ *Note that __Pasta Copinara__ respects the Obsidian setting `Auto Convert HTML`.*
 
 ## Commands added
 - `Paste as Plain Text without Modifications`: Utility Command which pastes the clipboard content as plain text and without any modifications. Also circumvents pasting-modifications from other plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title).
 
 ## Limitations
-The plugin only works with the standard pasting (`cmd/ctrl + v`) shortcut, and not with the `p` operator in vim. (Pasting with `cmd/ctrl + v` in normal or insert mode does work though.)
+- The plugin only works with the standard pasting (`cmd/ctrl + v`) shortcut, and not with the `p` operator in vim. (Pasting with `cmd/ctrl + v` in normal or insert mode does work though.)
+- To avoid conflicts with Plugins like [Auto Link Title](https://obsidian.md/plugins?id=obsidian-auto-link-title) or [Paste URL into Selection](https://obsidian.md/plugins?id=url-into-selection), *Pasta Copinara* will not be triggered when an URL is detected in the clipboard. 
 
 ## Installation
 Right now, the plugin is still in beta. It can be installed with the [BRAT Plugin](https://github.com/TfTHacker/obsidian42-brat).

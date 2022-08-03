@@ -1,11 +1,5 @@
 import { Editor } from "obsidian";
 
-function toIso8601 (date: Date): string {
-	return date
-		.toLocaleString("en-GB")
-		.replace(/(\d{2})\/(\d{2})\/(\d{4}).*/, "$3-$2-$1");
-}
-
 // if there is a selection, gets the content of the beginning of the selection
 function getLineContent (editor: Editor) {
 	const currentLineNumber = editor.getCursor("from").line;
@@ -18,7 +12,7 @@ function basicModifications (str: string): string {
 	return str = str
 		.replace(/(\S)-\s+\n?(?=\w)/g, "$1") // remove leftover hyphens when copying from PDFs
 		.replace(/\n{3,}/g, "\n\n") // remove excessive blank lines
-		.replace(/(\D)[.,]\d/g, "$1") // remove footnotes from quote
+		.replace(/(\D)[.,]\d/g, "$1") // remove leftover footnotes from quote
 		.replace(/\. ?\. ?\./g, "…") // ellipsis
 		.replace(/^[\n ]+|\s+$/g, ""); // trim, except for leading tabs (usually indentaton)
 }
@@ -53,8 +47,7 @@ function properLists (editor: Editor, cb: string) {
 	return cb.replace(listRegex, "");
 }
 
-
-// when copying into a list line, prevents double list enumerations like "- - item"
+// when copying into a task line, prevents double tasks like "- [ ] - [ ] item"
 function properTasks (editor: Editor, cb: string) {
 	const lineContent = getLineContent(editor);
 
@@ -66,42 +59,14 @@ function properTasks (editor: Editor, cb: string) {
 	return cb.replace(taskRegex, "");
 }
 
-
-function fromDiscordModifications (str: string): string {
-
-	// URL from any image OR pattern from the line containing username + time
-	const isFromDiscord = str.includes("https://cdn.discordapp") || /^## .*? _—_ .*:.*$/m.test(str);
-
-	if (isFromDiscord) {
-		const today = new Date();
-		const yesterday = new Date(new Date().setDate(new Date().getDate() - 1)); // JS, why u be like this? >:(
-		const todayISO = toIso8601(today);
-		const yesterdayISO = toIso8601(yesterday);
-
-		str = str
-			.replace( // reformat line with username + time
-				/^(?:\d.)?\s*## (.*?)(?:!.*?\))? _—_ (.*)/gm,
-				//  				(nick)(roleIcon)     (time)
-				"__$1__ ($2)  " // two spaces for strict line breaks option
-			)
-			.replace(/^.*cdn\.discordapp\.com\/avatars.*?\n/gm, "") // avatars removed
-			.replace(/\(Today at /g, `(${todayISO}, `) // replace relative w/ absolute date
-			.replace(/\(Yesterday at /g, `(${yesterdayISO}, `)
-			.replace(/^\s+/gm, "") // remove leading whitespaces
-			.replace(/^\s*\n/gm, "") // remove blank lines
-			.replace(/\n__/g, "\n\n__"); // add blank lines on speaker change
-	}
-
-	return str;
-}
+//------------------------------------------------------------------------------
 
 export default function clipboardModifications (editor: Editor, clipb: string): void {
 
 	clipb = basicModifications(clipb);
-	clipb = fromDiscordModifications(clipb);
 	clipb = blockquotify(editor, clipb);
 	clipb = properLists(editor, clipb);
 	clipb = properTasks(editor, clipb);
 
-	editor.replaceSelection(clipb);
+	editor.replaceSelection(clipb); // = paste the modified content
 }

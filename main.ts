@@ -40,35 +40,42 @@ export default class SmarterPasting extends Plugin {
 		return activeLeaf.editor;
 	}
 
+	// INFO: to inspect clipboard content types, use https://evercoder.github.io/clipboard-inspector/
 	async modifyPasteEvent (clipboardEv: ClipboardEvent): Promise<void> {
 
+		// abort when pane isn't markdown editor
 		const editor = this.getEditor();
-		if (!editor) return; // pane isn't markdown editor
+		if (!editor) return;
 
-		// check for plain text, too, since 'getData("text/html")' ignores plain-text
+		// abort when clipboard contains an image (or is empty)
+		// check for plain text, since 'getData("text/html")' ignores plain-text
 		const plainClipboard = clipboardEv.clipboardData.getData("text/plain");
-		if (!plainClipboard) return; // e.g. when clipboard contains image
+		if (!plainClipboard) return;
 
-		// prevent conflict with Auto Title Link Plugin
-		const urlRegex = /^((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))$/i;
+		// Abort when clipboard has URL, to prevent conflict with the plugins
+		// Auto Title Link & Paste URL into Selection
+		// has to search the entire clipboard (not surrounding the regex with ^$),
+		// because otherwise having 2 URLs cause Obsidian-breaking conflict
+		const urlRegex = /((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))/i;
 		if (urlRegex.test(plainClipboard.trim())) {
 			console.log("Pasta Copinara aborted due as the clipboard is a link to avoid conflict with other plugins that modify pasting.");
 			return;
 		}
 
-		// prevent default pasting --> https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts#L3801
+		// prevent default pasting & abort when not successful
 		clipboardEv.stopPropagation();
 		clipboardEv.preventDefault();
+		if (!clipboardEv.defaultPrevented) return;
 
 		// use Turndown via Obsidian API to emulate "Auto Convert HTML" setting
-		// to inspect clipboard content types, use https://evercoder.github.io/clipboard-inspector/
-		let clipboardText;
 		const convertHtmlEnabled = this.app.vault.getConfig("autoConvertHtml");
-		const htmlClipboard = clipboardEv.clipboardData.getData("text/html");
-		if (htmlClipboard && convertHtmlEnabled) clipboardText = htmlToMarkdown(htmlClipboard);
-		else clipboardText = plainClipboard;
+		const htmlClipb = clipboardEv.clipboardData.getData("text/html");
+		const clipboardText = htmlClipb && convertHtmlEnabled ? htmlToMarkdown(htmlClipb) : plainClipboard;
 
-		if (clipboardEv.defaultPrevented) clipboardModifications(editor, clipboardText);
+		// if everything went well, run clipboard modifications (also passing
+		// editor is necessary so clipboard text can be modified based on cursor
+		// position)
+		clipboardModifications(editor, clipboardText);
 	}
 
 	async pasteAsPlainText (editor: Editor): Promise<void> {
