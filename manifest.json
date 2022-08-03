@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-smarter-paste",
 	"name": "Pasta Copinara 🍝",
-	"version": "0.10.0",
+	"version": "0.11.0",
 	"minAppVersion": "0.13.19",
 	"description": "Various improvements for when you copypaste things into Obsidian.",
 	"author": "pseudometa",

@@ -1,3 +1,5 @@
+- 2022-08-03	release 0.11.0
+- 2022-08-03	rm Discord-modifications & abort with any URL
 - 2022-07-07	release 0.10.0
 - 2022-07-07	clean up tasks similar to lists
 - 2022-06-12	release 0.9.3
