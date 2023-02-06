@@ -1,6 +1,8 @@
 # Pasta Copinara 🍝
 
-![](https://img.shields.io/github/downloads/chrisgrieser/obsidian-smarter-paste/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/obsidian-smarter-paste?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
+This plugin is obsolete, the full feature set has been sherlocked by the Linter plugin: https://github.com/platers/obsidian-linter#paste-rules
+
+---
 
 Various improvements for when you copypaste things into [Obsidian](https://obsidian.md/).
 
